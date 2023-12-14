@@ -1,0 +1,28 @@
+name: Run unit-tests
+
+on:
+  push:
+    branches:
+      - master
+      - spoonify
+      - actions
+  pull_request:
+    branches:
+      - master
+      - spoonify
+      - actions
+
+
+jobs:
+  build:
+    runs-on: macos-12
+    defaults:
+      run:
+        working-directory: ~/.hammerspoon/
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ConorMacBrice/install-package@v1
+        with:
+          brew-cask: hammerspoon
+      - name: Run tests
+        run: ./run-tests spacehammer/test/*
