@@ -29,7 +29,9 @@ jobs:
       - name: Copy to correct path
         run: |
           cp -R $GITHUB_WORKSPACE ~/.hammerspoon/Spoons/Spacehammer.spoon/
+          ls -l ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Run tests
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
-          ./run-tests spacehammer/test/*
+          ls -al
+          ./run-tests ./spacehammer/test/*
