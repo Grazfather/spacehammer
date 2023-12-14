@@ -36,5 +36,5 @@ jobs:
       - name: Run unit tests
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
-          hs -c 'hs.ipc.cliInstall()'
+          hs -c 'require("hs.ipc"); hs.ipc.cliInstall()'
           ./run-test ./spacehammer/test/*
