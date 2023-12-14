@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ConorMacBride/install-package@v1
         with:
+          brew: bash
           brew-cask: hammerspoon
       - name: Run tests
         run: ./run-tests spacehammer/test/*
