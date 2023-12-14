@@ -32,7 +32,7 @@ jobs:
           echo $GITHUB_WORKSPACE
           cp -R $GITHUB_WORKSPACE/* ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Start Hammerspoon
-        run: open -a Hammerspoon
+        run: open /Applications/Hammerspoon.app/
       - name: Run unit tests
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
