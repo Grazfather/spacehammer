@@ -31,8 +31,10 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           cp -R $GITHUB_WORKSPACE/* ~/.hammerspoon/Spoons/Spacehammer.spoon/
+      - name: Start Hammerspoon
+        run: open -a Hammerspoon
       - name: Run unit tests
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
-          echo ./run-test ./spacehammer/test/*
+          hs -c 'hs.ipc.cliInstall()'
           ./run-test ./spacehammer/test/*
