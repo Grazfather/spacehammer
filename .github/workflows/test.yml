@@ -16,14 +16,20 @@ on:
 jobs:
   build:
     runs-on: macos-12
-    defaults:
-      run:
-        working-directory: ~/.hammerspoon/
+        # working-directory: /Users/runner/.hammerspoon/
     steps:
-      - uses: actions/checkout@v2
       - uses: ConorMacBride/install-package@v1
         with:
           brew: bash
           brew-cask: hammerspoon
+      - uses: actions/checkout@v4
+      - name: Create paths
+        run: |
+          mkdir -p ~/.hammerspoon/Spoons/Spacehammer.spoon
+      - name: Copy to correct path
+        run: |
+          cp -R $GITHUB_WORKSPACE ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Run tests
-        run: ./run-tests spacehammer/test/*
+        run: |
+          cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
+          ./run-tests spacehammer/test/*
