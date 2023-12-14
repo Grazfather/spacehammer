@@ -28,7 +28,9 @@ jobs:
           mkdir -p ~/.hammerspoon/Spoons/Spacehammer.spoon
       - name: Copy to correct path
         run: |
-          cp -R $GITHUB_WORKSPACE/spacehammer/ ~/.hammerspoon/Spoons/Spacehammer.spoon/
+          echo $GITHUB_WORKSPACE
+          ls -l $GITHUB_WORKSPACE
+          cp -R $GITHUB_WORKSPACE/* ~/.hammerspoon/Spoons/Spacehammer.spoon/
           ls -l ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Run tests
         run: |
