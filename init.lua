@@ -1,25 +1,26 @@
---  Copyright (c) 2017-2020 Ag Ibragimov & Contributors
---
---  Author: Ag Ibragimov <agzam.ibragimov@gmail.com>
---
---  Contributors:
---      Jay Zawrotny <jayzawrotny@gmail.com>
---
---  URL: https://github.com/agzam/spacehammer
---
---  License: MIT
---
+local Spacehammer = {
+  name = "Spacehammer",
+  version = "3.0.0",
+  author = "Ag Ibragimov",
+  license = "MIT",
+  homepage = "https://github.com/agzam/spacehammer"
+}
 
+function Spacehammer:init()
+  local scriptPath = hs.spoons.scriptPath()
 
-hs.alert.show("Spacehammer config loaded")
+  package.path = package.path .. ";" .. scriptPath .. "?.lua;" .. scriptPath .. "?/init.lua;"
+  package.cpath = package.cpath .. ";" .. scriptPath .. "?.so;"
 
--- Support upcoming 5.4 release and also use luarocks' local path
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/.luarocks/share/lua/5.4/?.lua;" .. os.getenv("HOME") .. "/.luarocks/share/lua/5.4/?/init.lua"
-package.cpath = package.cpath .. ";" .. os.getenv("HOME") .. "/.luarocks/lib/lua/5.4/?.so"
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/.luarocks/share/lua/5.3/?.lua;" .. os.getenv("HOME") .. "/.luarocks/share/lua/5.3/?/init.lua"
-package.cpath = package.cpath .. ";" .. os.getenv("HOME") .. "/.luarocks/lib/lua/5.3/?.so"
+  fennel = require("spacehammer.vendor.fennel")
+  fennel.path = scriptPath .. "?.fnl;" .. scriptPath .. "?/init.fnl;" .. fennel.path
+  fennel['macro-path'] = scriptPath .. "?.fnl;" .. scriptPath .. "?/init-macros.fnl;" .. scriptPath .. "?/init.fnl;" .. fennel.path
+  table.insert(package.loaders or package.searchers, fennel.searcher)
+end
 
-fennel = require("fennel")
-table.insert(package.loaders or package.searchers, fennel.searcher)
+function Spacehammer:start()
+  require('spacehammer.core')
+  hs.alert.show("Spacehammer config loaded")
+end
 
-require "core"
+return Spacehammer
