@@ -16,7 +16,6 @@ on:
 jobs:
   build:
     runs-on: macos-12
-        # working-directory: /Users/runner/.hammerspoon/
     steps:
       - name: Install apps
         uses: ConorMacBride/install-package@v1
@@ -31,12 +30,9 @@ jobs:
       - name: Copy spoon to correct path
         run: |
           echo $GITHUB_WORKSPACE
-          ls -l $GITHUB_WORKSPACE
           cp -R $GITHUB_WORKSPACE/* ~/.hammerspoon/Spoons/Spacehammer.spoon/
-          ls -l ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Run unit tests
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
-          ls -al
-          hs -h
+          echo ./run-test ./spacehammer/test/*
           ./run-test ./spacehammer/test/*
