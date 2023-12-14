@@ -22,7 +22,8 @@ jobs:
         with:
           brew: bash
           brew-cask: hammerspoon
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Create paths
         run: |
           mkdir -p ~/.hammerspoon/Spoons/Spacehammer.spoon
@@ -36,4 +37,5 @@ jobs:
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
           ls -al
+          hs -h
           ./run-test ./spacehammer/test/*
