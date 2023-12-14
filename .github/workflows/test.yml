@@ -36,4 +36,4 @@ jobs:
         run: |
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
           ls -al
-          ./run-tests ./spacehammer/test/*
+          ./run-test ./spacehammer/test/*
