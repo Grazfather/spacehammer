@@ -44,5 +44,6 @@ jobs:
         run: open /Applications/Hammerspoon.app/
       - name: Run unit tests
         run: |
+          open /Applications/Hammerspoon.app/
           cd ~/.hammerspoon/Spoons/Spacehammer.spoon/
           ./run-test ./spacehammer/test/*
