@@ -33,10 +33,12 @@ jobs:
           cp -R $GITHUB_WORKSPACE/* ~/.hammerspoon/Spoons/Spacehammer.spoon/
       - name: Install Hammerspoon config
         run: |
+          ls -l /usr/local
           cat > ~/.hammerspoon/init.lua << EOF
           require("hs.ipc")
           hs.ipc.cliInstall()
           EOF
+          which hs
           cat ~/.hammerspoon/init.lua
       - name: Start Hammerspoon
         run: open /Applications/Hammerspoon.app/
